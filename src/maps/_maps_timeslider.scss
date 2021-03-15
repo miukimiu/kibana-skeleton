@@ -31,18 +31,23 @@
 .kbnMapsTimeslider__timeWindow {
   display: flex;
   flex: 1;
-  justify-content: space-between;
-  align-items: center;
-  padding: $euiSizeXS;
   margin-right: $euiSizeS;
-  background-color: $euiColorLightestShade;
-  border-radius: $euiBorderRadiusSmall;
   font-size: $euiFontSizeS;
 }
 
+.kbnMapsTimeslider__timeWindowDot {
+  margin-right: $euiSizeXS;
+}
+
 .kbnMapsTimeslider__controls {
+  margin-left: $euiSizeS;
+}
+
+.kbnMapsTimeslider__innerPanel {
   display: inline-flex;
   background: $euiColorLightestShade;
   border-radius: $euiBorderRadiusSmall;
   padding: $euiSizeXS;
+  display: inline-flex;
+  align-items: center;
 }

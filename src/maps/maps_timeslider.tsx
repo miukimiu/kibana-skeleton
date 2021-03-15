@@ -49,22 +49,33 @@ export function MapsTimeslider({
         ></EuiButtonIcon>
 
         <div className="kbnMapsTimeslider__timeWindow">
+          <EuiIcon
+            className="kbnMapsTimeslider__timeWindowDot"
+            type="dot"
+            color="primary"
+          ></EuiIcon>
           <span>{timeWindowText}</span>
-          <EuiButtonIcon display="base" iconType="controlsHorizontal" />
         </div>
-        <div className="kbnMapsTimeslider__controls">
+        <div className="kbnMapsTimeslider__innerPanel">
           <EuiButtonIcon
-            onClick={onClickPrevious}
-            iconType={MapsIconPrevious}
+            className="kbnMapsTimeslider__settings"
             color="text"
-            aria-label="Previous time window"
-          ></EuiButtonIcon>
-          <EuiButtonIcon
-            onClick={onClickNext}
-            iconType={MapsIconNext}
-            color="text"
-            aria-label="Next time window"
-          ></EuiButtonIcon>
+            iconType="controlsHorizontal"
+          />
+          <div className="kbnMapsTimeslider__controls">
+            <EuiButtonIcon
+              onClick={onClickPrevious}
+              iconType={MapsIconPrevious}
+              color="text"
+              aria-label="Previous time window"
+            ></EuiButtonIcon>
+            <EuiButtonIcon
+              onClick={onClickNext}
+              iconType={MapsIconNext}
+              color="text"
+              aria-label="Next time window"
+            ></EuiButtonIcon>
+          </div>
         </div>
       </div>
       <div className="kbnMapsTimeslider__row">
