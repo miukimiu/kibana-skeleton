@@ -49,17 +49,8 @@ export function MapsTimeslider({
         ></EuiButtonIcon>
 
         <div className="kbnMapsTimeslider__timeWindow">
-          <span>
-            <EuiIcon type="dot" color="primary"></EuiIcon>
-            <span>{timeWindowText}</span>
-          </span>
-          <EuiBadge
-            color="primary"
-            onClick={() => {}}
-            onClickAriaLabel="Aria label applied to text button"
-          >
-            History
-          </EuiBadge>
+          <span>{timeWindowText}</span>
+          <EuiButtonIcon display="base" iconType="controlsHorizontal" />
         </div>
         <div className="kbnMapsTimeslider__controls">
           <EuiButtonIcon

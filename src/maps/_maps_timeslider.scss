@@ -13,6 +13,10 @@
 .kbnMapsTimeslider__row {
   display: flex;
 
+  & + & {
+    margin-top: $euiSizeS;
+  }
+
   > * {
     align-items: center;
   }
@@ -28,12 +32,17 @@
   display: flex;
   flex: 1;
   justify-content: space-between;
+  align-items: center;
   padding: $euiSizeXS;
   margin-right: $euiSizeS;
-  background: $euiColorLightestShade;
+  background-color: $euiColorLightestShade;
   border-radius: $euiBorderRadiusSmall;
+  font-size: $euiFontSizeS;
 }
 
 .kbnMapsTimeslider__controls {
   display: inline-flex;
+  background: $euiColorLightestShade;
+  border-radius: $euiBorderRadiusSmall;
+  padding: $euiSizeXS;
 }

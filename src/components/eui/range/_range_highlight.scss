@@ -4,6 +4,7 @@
   width: 100%;
   top: calc(50% - #{($euiDateRangeHighlightHeight / 2)});
   background: $euiColorLightShade !important;
+  border-radius: $euiBorderRadius;
   overflow: hidden;
   z-index: 1;
 

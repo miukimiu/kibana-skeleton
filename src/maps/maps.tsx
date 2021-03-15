@@ -76,7 +76,24 @@ export default function Maps() {
       setRadiusIncrease2(radiusIncreaseArray2[position + 1]);
     }
   };
-  const onClickPrevious = () => {};
+  const onClickPrevious = () => {
+    const isElement = (element: EuiDualRangeProps["value"]) =>
+      element[0] === timeWindow[0];
+
+    const position = last90Days.findIndex(isElement);
+
+    if (position <= 0) {
+      setTimeWindow(last90Days[last90Days.length - 1]);
+      setTimeWindowText(last90DaysText[last90Days.length - 1]);
+      setRadiusIncrease(radiusIncreaseArray[last90Days.length - 1]);
+      setRadiusIncrease2(radiusIncreaseArray2[last90Days.length - 1]);
+    } else {
+      setTimeWindow(last90Days[position - 1]);
+      setTimeWindowText(last90DaysText[position - 1]);
+      setRadiusIncrease(radiusIncreaseArray[position - 1]);
+      setRadiusIncrease2(radiusIncreaseArray2[position - 1]);
+    }
+  };
 
   const [isTimeSliderActive, setIsTimeSliderActive] = useState(true);
 
