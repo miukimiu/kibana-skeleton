@@ -1,13 +1,7 @@
 import { EuiPageHeader } from "@elastic/eui";
 import "leaflet/dist/leaflet.css";
 import { useState } from "react";
-import {
-  MapContainer,
-  Circle,
-  TileLayer,
-  CircleMarkerProps,
-  Marker,
-} from "react-leaflet";
+import { MapContainer, Circle, TileLayer } from "react-leaflet";
 import { MapsTimeslider } from "./maps_timeslider";
 import { MapsTopNavbar } from "./maps_top_navbar";
 import { EuiDualRangeProps } from "../components/eui/range/dual_range";

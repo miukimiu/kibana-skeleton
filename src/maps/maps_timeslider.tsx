@@ -1,16 +1,8 @@
 import { HTMLAttributes, ReactElement } from "react";
 import { CommonProps } from "@elastic/eui";
 import classNames from "classnames";
-import {
-  EuiIcon,
-  EuiBadge,
-  EuiPanel,
-  EuiButtonIcon,
-  // EuiDualRange,
-  // EuiDualRangeProps,
-} from "@elastic/eui";
+import { EuiIcon, EuiButtonIcon } from "@elastic/eui";
 import { MapsIconNext, MapsIconPrevious } from "./icons/";
-import { useState } from "react";
 import { EuiDualRange } from "../components/eui";
 import { EuiDualRangeProps } from "../components/eui/range/dual_range";
 
