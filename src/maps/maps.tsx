@@ -38,15 +38,13 @@ export default function Maps() {
     { label: "April 11", value: 6 },
   ];
 
-  const radiusIncreaseArray = [0, -2000, 1000, 1600, 2800, -2400];
-  const radiusIncreaseArray2 = [0, 1000, 3000, -2100, 500, -4000];
+  const radiusIncreaseArray = [4000, -2000, 1000, 1600, 2800, -2400];
+  const radiusIncreaseArray2 = [3000, 1000, 3000, -2100, 500, -4000];
 
   const [timeWindow, setTimeWindow] = useState(last90Days[0]);
   const [timeWindowText, setTimeWindowText] = useState(last90DaysText[0]);
-  const [radiusIncrease, setRadiusIncrease] = useState(radiusIncreaseArray[0]);
-  const [radiusIncrease2, setRadiusIncrease2] = useState(
-    radiusIncreaseArray2[0]
-  );
+  const [radiusIncrease, setRadiusIncrease] = useState(0);
+  const [radiusIncrease2, setRadiusIncrease2] = useState(0);
 
   const onChangeTimeWindow: EuiDualRangeProps["onChange"] = (value) => {
     setTimeWindow(value);
@@ -89,10 +87,19 @@ export default function Maps() {
     }
   };
 
-  const [isTimeSliderActive, setIsTimeSliderActive] = useState(true);
+  const [isTimeSliderActive, setIsTimeSliderActive] = useState(false);
 
   const onToggleTimeslider = () => {
     setIsTimeSliderActive(!isTimeSliderActive);
+
+    if (!isTimeSliderActive) {
+      setTimeWindow(last90Days[0]);
+      setRadiusIncrease(radiusIncreaseArray[0]);
+      setRadiusIncrease2(radiusIncreaseArray2[0]);
+    } else {
+      setRadiusIncrease(0);
+      setRadiusIncrease2(0);
+    }
   };
 
   console.log("radiusIncrease", radiusIncrease);
