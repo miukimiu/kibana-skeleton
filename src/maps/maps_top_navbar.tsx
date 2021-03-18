@@ -1,35 +1,15 @@
 import {
-  CommonProps,
   EuiButtonEmpty,
   EuiButtonIcon,
   EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
 } from "@elastic/eui";
-import classNames from "classnames";
-import { HTMLAttributes, ReactElement } from "react";
 import { EuiSuperDatePicker } from "../components/eui/super_date_picker";
-import { MapsIconClockPlay } from "./icons/";
 
-type MapsTopNavbarProps = CommonProps &
-  HTMLAttributes<HTMLDivElement> & {
-    onToggleTimeslider: () => void;
-  };
-
-export function MapsTopNavbar({
-  className,
-  onToggleTimeslider,
-  ...rest
-}: MapsTopNavbarProps): ReactElement {
-  const classes = classNames("kbnGlobals", className);
-
+export function MapsTopNavbar() {
   return (
-    <EuiFlexGroup
-      gutterSize="s"
-      responsive={false}
-      className={classes}
-      {...rest}
-    >
+    <EuiFlexGroup gutterSize="s" responsive={false} className="kbnGlobals">
       <EuiFlexItem grow={false}>
         <EuiButtonIcon
           display="base"
@@ -52,15 +32,6 @@ export function MapsTopNavbar({
       </EuiFlexItem>
       <EuiFlexItem grow={false}>
         <EuiSuperDatePicker />
-      </EuiFlexItem>
-      <EuiFlexItem grow={false}>
-        <EuiButtonIcon
-          display="base"
-          size="s"
-          iconType={MapsIconClockPlay}
-          aria-label="More"
-          onClick={onToggleTimeslider}
-        />
       </EuiFlexItem>
     </EuiFlexGroup>
   );

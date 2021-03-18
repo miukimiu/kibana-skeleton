@@ -1,4 +1,5 @@
 .kbnMapsTimeslider {
+  @include euiBottomShadowLarge;
   position: fixed;
   left: 50%;
   bottom: $euiSize;
@@ -45,7 +46,7 @@
 
 .kbnMapsTimeslider__innerPanel {
   display: inline-flex;
-  background: $euiColorLightestShade;
+  // background: $euiColorLightestShade;
   border-radius: $euiBorderRadiusSmall;
   padding: $euiSizeXS;
   display: inline-flex;

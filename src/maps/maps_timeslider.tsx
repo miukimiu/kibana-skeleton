@@ -1,8 +1,8 @@
 import { HTMLAttributes, ReactElement } from "react";
 import { CommonProps } from "@elastic/eui";
 import classNames from "classnames";
-import { EuiIcon, EuiButtonIcon } from "@elastic/eui";
-import { MapsIconNext, MapsIconPrevious } from "./icons/";
+import { EuiButtonIcon, EuiBadge, EuiButtonEmpty } from "@elastic/eui";
+import { MapsIconNext, MapsIconPrevious, MapsIconLayers } from "./icons/";
 import { EuiDualRange } from "../components/eui";
 import { EuiDualRangeProps } from "../components/eui/range/dual_range";
 
@@ -41,19 +41,46 @@ export function MapsTimeslider({
         ></EuiButtonIcon>
 
         <div className="kbnMapsTimeslider__timeWindow">
-          <EuiIcon
+          {/* <EuiIcon
             className="kbnMapsTimeslider__timeWindowDot"
-            type="dot"
+            type="controlsHorizontal"
             color="primary"
           ></EuiIcon>
-          <span>{timeWindowText}</span>
+          <span>{timeWindowText}</span> */}
+          {/* 
+          <EuiBadge iconType="controlsHorizontal">{timeWindowText}</EuiBadge> */}
+          <EuiButtonEmpty
+            size="s"
+            iconType="controlsHorizontal"
+            flush="left"
+            color="text"
+          >
+            {timeWindowText}
+          </EuiButtonEmpty>
         </div>
+
         <div className="kbnMapsTimeslider__innerPanel">
-          <EuiButtonIcon
+          <EuiBadge iconType={MapsIconLayers}>1 layer</EuiBadge>
+
+          {/* <EuiButtonEmpty
+            color="text"
+            size="xs"
+            onClick={() => {}}
+            iconType={MapsIconLayers}
+          >
+            1 layer
+          </EuiButtonEmpty> */}
+
+          {/* <EuiButtonIcon
             className="kbnMapsTimeslider__settings"
             color="text"
-            iconType="controlsHorizontal"
-          />
+            iconType={MapsIconLayers}
+          /> */}
+          {/* <EuiButtonIcon
+            className="kbnMapsTimeslider__settings"
+            color="text"
+            iconType="lock"
+          /> */}
           <div className="kbnMapsTimeslider__controls">
             <EuiButtonIcon
               onClick={onClickPrevious}
@@ -61,6 +88,12 @@ export function MapsTimeslider({
               color="text"
               aria-label="Previous time window"
             ></EuiButtonIcon>
+            {/* <EuiButtonIcon
+              onClick={onClickNext}
+              iconType={MapsIconPlay}
+              color="text"
+              aria-label="Next time window"
+            ></EuiButtonIcon> */}
             <EuiButtonIcon
               onClick={onClickNext}
               iconType={MapsIconNext}

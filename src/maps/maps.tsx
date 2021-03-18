@@ -4,6 +4,7 @@ import { useState } from "react";
 import { MapContainer, Circle, TileLayer } from "react-leaflet";
 import { MapsTimeslider } from "./maps_timeslider";
 import { MapsTopNavbar } from "./maps_top_navbar";
+import { MapsToolbar } from "./maps_toolbar";
 import { EuiDualRangeProps } from "../components/eui/range/dual_range";
 
 const username = "miukimiu";
@@ -107,43 +108,51 @@ export default function Maps() {
   return (
     <div className="kbnMaps">
       <EuiPageHeader style={{ padding: 16 }}>
-        <MapsTopNavbar onToggleTimeslider={onToggleTimeslider} />
+        <MapsTopNavbar />
       </EuiPageHeader>
-      {isTimeSliderActive && (
-        <MapsTimeslider
-          onClose={onToggleTimeslider}
-          onChangeTimeWindow={onChangeTimeWindow}
-          onClickPrevious={onClickPrevious}
-          onClickNext={onClickNext}
-          timeWindowText={timeWindowText}
-          timeWindow={timeWindow}
-          ticks={ticks}
-        />
-      )}
+      <div className="kbnMaps__container">
+        <MapsToolbar onToggleTimeslider={onToggleTimeslider} />
+        {isTimeSliderActive && (
+          <MapsTimeslider
+            onClose={onToggleTimeslider}
+            onChangeTimeWindow={onChangeTimeWindow}
+            onClickPrevious={onClickPrevious}
+            onClickNext={onClickNext}
+            timeWindowText={timeWindowText}
+            timeWindow={timeWindow}
+            ticks={ticks}
+          />
+        )}
 
-      <MapContainer center={[51.505, -0.09]} zoom={9} scrollWheelZoom={false}>
-        <TileLayer
-          attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-          url={url}
-        />
-
-        <Circle
-          center={[51.3, -1.3]}
-          className="kbnMaps__circle"
-          radius={6700 + radiusIncrease}
-        />
-        <Circle
+        <MapContainer
           center={[51.505, -0.09]}
-          className="kbnMaps__circle"
-          radius={10700 + radiusIncrease}
-        />
+          zoom={9}
+          scrollWheelZoom={false}
+          zoomControl={false}
+        >
+          <TileLayer
+            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url={url}
+          />
 
-        <Circle
-          center={[51.8, -0.9]}
-          className="kbnMaps__circle"
-          radius={5000 + radiusIncrease2}
-        />
-      </MapContainer>
+          <Circle
+            center={[51.3, -1.3]}
+            className="kbnMaps__circle"
+            radius={6700 + radiusIncrease}
+          />
+          <Circle
+            center={[51.505, -0.09]}
+            className="kbnMaps__circle"
+            radius={10700 + radiusIncrease}
+          />
+
+          <Circle
+            center={[51.8, -0.9]}
+            className="kbnMaps__circle"
+            radius={5000 + radiusIncrease2}
+          />
+        </MapContainer>
+      </div>
     </div>
   );
 }
