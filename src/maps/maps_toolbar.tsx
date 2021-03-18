@@ -1,8 +1,6 @@
 import {
   CommonProps,
-  EuiButtonEmpty,
   EuiButtonIcon,
-  EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
 } from "@elastic/eui";
