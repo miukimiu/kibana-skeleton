@@ -1,5 +1,5 @@
-import { HTMLAttributes, ReactElement } from "react";
-import { CommonProps } from "@elastic/eui";
+import { HTMLAttributes, ReactElement, useState } from "react";
+import { CommonProps, EuiPopover } from "@elastic/eui";
 import classNames from "classnames";
 import { EuiButtonIcon, EuiBadge, EuiButtonEmpty } from "@elastic/eui";
 import { MapsIconNext, MapsIconPrevious, MapsIconLayers } from "./icons/";
@@ -28,6 +28,20 @@ export function MapsTimeslider({
   ticks,
 }: MapsTimesliderProps): ReactElement {
   const classes = classNames("kbnMapsTimeslider", className);
+  const [isLayersPopoverOpen, setIsLayersPopoverOpen] = useState(false);
+  const [isTimeWindowPopoverOpen, setIsTimeWindowPopoverOpen] = useState(false);
+
+  const onClickLayersBadge = () =>
+    setIsLayersPopoverOpen((isLayersPopoverOpen) => !isLayersPopoverOpen);
+
+  const closeLayersPopover = () => setIsLayersPopoverOpen(false);
+
+  const onClickTimeWindow = () =>
+    setIsTimeWindowPopoverOpen(
+      (isTimeWindowPopoverOpen) => !isTimeWindowPopoverOpen
+    );
+
+  const closeTimeWindowPanel = () => setIsTimeWindowPopoverOpen(false);
 
   return (
     <div className={classes}>
@@ -41,46 +55,70 @@ export function MapsTimeslider({
         ></EuiButtonIcon>
 
         <div className="kbnMapsTimeslider__timeWindow">
-          {/* <EuiIcon
-            className="kbnMapsTimeslider__timeWindowDot"
-            type="controlsHorizontal"
-            color="primary"
-          ></EuiIcon>
-          <span>{timeWindowText}</span> */}
-          {/* 
-          <EuiBadge iconType="controlsHorizontal">{timeWindowText}</EuiBadge> */}
-          <EuiButtonEmpty
-            size="s"
-            iconType="controlsHorizontal"
-            flush="left"
-            color="text"
+          <EuiPopover
+            button={
+              <EuiButtonEmpty
+                size="s"
+                iconType="controlsHorizontal"
+                flush="left"
+                color="text"
+                onClick={onClickTimeWindow}
+              >
+                {timeWindowText}
+              </EuiButtonEmpty>
+            }
+            isOpen={isTimeWindowPopoverOpen}
+            closePopover={closeTimeWindowPanel}
+            anchorPosition="upCenter"
           >
-            {timeWindowText}
-          </EuiButtonEmpty>
+            <div>
+              <div>Enable history</div>
+              <div>Lock current time window</div>
+            </div>
+          </EuiPopover>
         </div>
 
         <div className="kbnMapsTimeslider__innerPanel">
-          <EuiBadge iconType={MapsIconLayers}>1 layer</EuiBadge>
-
-          {/* <EuiButtonEmpty
-            color="text"
-            size="xs"
-            onClick={() => {}}
-            iconType={MapsIconLayers}
+          <EuiPopover
+            button={
+              <EuiBadge
+                iconType={MapsIconLayers}
+                onClick={onClickLayersBadge}
+                onClickAriaLabel="Aria label applied to text button"
+              >
+                1 layer
+              </EuiBadge>
+            }
+            isOpen={isLayersPopoverOpen}
+            closePopover={closeLayersPopover}
+            anchorPosition="upCenter"
           >
-            1 layer
-          </EuiButtonEmpty> */}
+            <div className="mapTocEntry">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="#D36086"
+                fillOpacity="0.6"
+                stroke="#D36086"
+                strokeWidth="1"
+                viewBox="0 0 16 16"
+              >
+                <defs>
+                  <path d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 118 0a8 8 0 010 16zm0-4a4 4 0 100-8 4 4 0 000 8zm0-1a3 3 0 110-6 3 3 0 010 6zm0-2a1 1 0 100-2 1 1 0 000 2z"></path>
+                </defs>
+                <ellipse
+                  cx="8.035"
+                  cy="7.966"
+                  rx="7.382"
+                  ry="7.381"
+                  transform="skewY(.967) scale(.99986 1)"
+                ></ellipse>
+              </svg>
+              <span>Number of cases</span>
+            </div>
+          </EuiPopover>
 
-          {/* <EuiButtonIcon
-            className="kbnMapsTimeslider__settings"
-            color="text"
-            iconType={MapsIconLayers}
-          /> */}
-          {/* <EuiButtonIcon
-            className="kbnMapsTimeslider__settings"
-            color="text"
-            iconType="lock"
-          /> */}
           <div className="kbnMapsTimeslider__controls">
             <EuiButtonIcon
               onClick={onClickPrevious}
@@ -88,12 +126,6 @@ export function MapsTimeslider({
               color="text"
               aria-label="Previous time window"
             ></EuiButtonIcon>
-            {/* <EuiButtonIcon
-              onClick={onClickNext}
-              iconType={MapsIconPlay}
-              color="text"
-              aria-label="Next time window"
-            ></EuiButtonIcon> */}
             <EuiButtonIcon
               onClick={onClickNext}
               iconType={MapsIconNext}

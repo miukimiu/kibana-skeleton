@@ -6,6 +6,7 @@ import { MapsTimeslider } from "./maps_timeslider";
 import { MapsTopNavbar } from "./maps_top_navbar";
 import { MapsToolbar } from "./maps_toolbar";
 import { EuiDualRangeProps } from "../components/eui/range/dual_range";
+import { MapsLayersWidget } from "./maps_layers_widget";
 
 const username = "miukimiu";
 const style_id = "ckm4ugehhdgzf17l9r58xfm45";
@@ -123,6 +124,8 @@ export default function Maps() {
             ticks={ticks}
           />
         )}
+
+        <MapsLayersWidget />
 
         <MapContainer
           center={[51.505, -0.09]}
