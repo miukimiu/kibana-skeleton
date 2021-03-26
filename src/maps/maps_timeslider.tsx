@@ -1,8 +1,8 @@
 import { HTMLAttributes, ReactElement, useState } from "react";
 import { CommonProps, EuiPopover } from "@elastic/eui";
 import classNames from "classnames";
-import { EuiButtonIcon, EuiBadge, EuiButtonEmpty } from "@elastic/eui";
-import { MapsIconNext, MapsIconPrevious, MapsIconLayers } from "./icons/";
+import { EuiButtonIcon, EuiButtonEmpty } from "@elastic/eui";
+import { MapsIconNext, MapsIconPrevious } from "./icons/";
 import { EuiDualRange } from "../components/eui";
 import { EuiDualRangeProps } from "../components/eui/range/dual_range";
 
@@ -28,13 +28,8 @@ export function MapsTimeslider({
   ticks,
 }: MapsTimesliderProps): ReactElement {
   const classes = classNames("kbnMapsTimeslider", className);
-  const [isLayersPopoverOpen, setIsLayersPopoverOpen] = useState(false);
+
   const [isTimeWindowPopoverOpen, setIsTimeWindowPopoverOpen] = useState(false);
-
-  const onClickLayersBadge = () =>
-    setIsLayersPopoverOpen((isLayersPopoverOpen) => !isLayersPopoverOpen);
-
-  const closeLayersPopover = () => setIsLayersPopoverOpen(false);
 
   const onClickTimeWindow = () =>
     setIsTimeWindowPopoverOpen(
