@@ -1,0 +1,18 @@
+.euiDateRangeThumb {
+  @include euiDateRangeThumbStyle;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -($euiDateRangeThumbHeight / 2);
+  pointer-events: none;
+  z-index: 2;
+
+  &:focus {
+    @include euiCustomControlFocused;
+  }
+
+  &--hasTicks {
+    top: 25%;
+  }
+}

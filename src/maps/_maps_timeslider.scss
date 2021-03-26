@@ -1,0 +1,54 @@
+.kbnMapsTimeslider {
+  @include euiBottomShadowLarge;
+  position: fixed;
+  left: 50%;
+  bottom: $euiSize;
+  transform: translateX(-50%);
+  min-width: 500px;
+  z-index: 99999;
+  background: $euiColorEmptyShade;
+  padding: $euiSizeL $euiSizeXL;
+  border-radius: $euiSize;
+}
+
+.kbnMapsTimeslider__row {
+  display: flex;
+
+  & + & {
+    margin-top: $euiSizeS;
+  }
+
+  > * {
+    align-items: center;
+  }
+}
+
+.kbnMapsTimeslider__close {
+  position: absolute;
+  top: $euiSizeXS;
+  right: $euiSizeXS;
+}
+
+.kbnMapsTimeslider__timeWindow {
+  display: flex;
+  flex: 1;
+  margin-right: $euiSizeS;
+  font-size: $euiFontSizeS;
+}
+
+.kbnMapsTimeslider__timeWindowDot {
+  margin-right: $euiSizeXS;
+}
+
+.kbnMapsTimeslider__controls {
+  margin-left: $euiSizeS;
+}
+
+.kbnMapsTimeslider__innerPanel {
+  display: inline-flex;
+  // background: $euiColorLightestShade;
+  border-radius: $euiBorderRadiusSmall;
+  padding: $euiSizeXS;
+  display: inline-flex;
+  align-items: center;
+}
